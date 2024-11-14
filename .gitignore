@@ -1,0 +1,7 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/VisualStudio_MathematicalTransformationsInCPlusPlus
+/VisualSt.b5fe3563/x64/Debug
+/x64/Debug
