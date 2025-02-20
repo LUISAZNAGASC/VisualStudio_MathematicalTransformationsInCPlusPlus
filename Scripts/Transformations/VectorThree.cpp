@@ -3,13 +3,13 @@
 std::ostream& operator<<(std::ostream& ostreamComponent, const VectorThree& thisVectorThree)
 {
 	ostreamComponent << "{ ";
-	ostreamComponent << "X : ";
+	ostreamComponent << "X: ";
 	ostreamComponent << thisVectorThree.GetX();
-	ostreamComponent << " , ";
-	ostreamComponent << "Y : ";
+	ostreamComponent << ", ";
+	ostreamComponent << "Y: ";
 	ostreamComponent << thisVectorThree.GetY();
-	ostreamComponent << " , ";
-	ostreamComponent << "Z : ";
+	ostreamComponent << ", ";
+	ostreamComponent << "Z: ";
 	ostreamComponent << thisVectorThree.GetZ();
 	ostreamComponent << " }";
 
