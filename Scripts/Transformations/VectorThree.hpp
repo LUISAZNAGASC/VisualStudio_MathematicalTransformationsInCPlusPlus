@@ -12,58 +12,58 @@ private:
 	double y = 0.0;
 	double z = 0.0;
 
-	friend std::ostream& operator<<(std::ostream& ostreamComponentToDisplay, const VectorThree& thisVectorThreeToDisplay);
+	friend std::ostream& operator<<(std::ostream& ostreamComponent, const VectorThree& thisVectorThree);
 
 protected:
 
 public:
 	explicit VectorThree();
-	explicit VectorThree(const double newXToInitialize, const double newYToInitialize, const double newZToInitialize);
-	VectorThree(const VectorThree& otherVectorThreeToCopy);
+	explicit VectorThree(const double newX, const double newY, const double newZ);
+	VectorThree(const VectorThree& otherVectorThree);
 	~VectorThree();
 
-	const bool operator==(const VectorThree& otherVectorThreeToCompare) const;
-	const bool operator!=(const VectorThree& otherVectorThreeToCompare) const;
+	const bool operator==(const VectorThree& otherVectorThree) const;
+	const bool operator!=(const VectorThree& otherVectorThree) const;
 
-	const VectorThree& operator=(const VectorThree& otherVectorThreeToAssign);
+	const VectorThree& operator=(const VectorThree& otherVectorThree);
 
-	const VectorThree operator+(const VectorThree& otherVectorThreeToAssign) const;
-	const VectorThree operator-(const VectorThree& otherVectorThreeToAssign) const;
-	const VectorThree operator*(const VectorThree& otherVectorThreeToAssign) const;
-	const VectorThree operator/(const VectorThree& otherVectorThreeToAssign) const;
+	const VectorThree operator+(const VectorThree& otherVectorThree) const;
+	const VectorThree operator-(const VectorThree& otherVectorThree) const;
+	const VectorThree operator*(const VectorThree& otherVectorThree) const;
+	const VectorThree operator/(const VectorThree& otherVectorThree) const;
 
-	const VectorThree& operator+=(const VectorThree& otherVectorThreeToAssign);
-	const VectorThree& operator-=(const VectorThree& otherVectorThreeToAssign);
-	const VectorThree& operator*=(const VectorThree& otherVectorThreeToAssign);
-	const VectorThree& operator/=(const VectorThree& otherVectorThreeToAssign);
+	const VectorThree& operator+=(const VectorThree& otherVectorThree);
+	const VectorThree& operator-=(const VectorThree& otherVectorThree);
+	const VectorThree& operator*=(const VectorThree& otherVectorThree);
+	const VectorThree& operator/=(const VectorThree& otherVectorThree);
 
-	const VectorThree operator*(const double specificValueToAssign) const;
-	const VectorThree operator/(const double specificValueToAssign) const;
+	const VectorThree operator*(const double specificValue) const;
+	const VectorThree operator/(const double specificValue) const;
 
-	const VectorThree& operator*=(const double specificValueToAssign);
-	const VectorThree& operator/=(const double specificValueToAssign);
+	const VectorThree& operator*=(const double specificValue);
+	const VectorThree& operator/=(const double specificValue);
 
 	const double GetX() const;
 	const double GetY() const;
 	const double GetZ() const;
 
-	static const bool CompareBetween(const VectorThree& firstVectorThreeToCompare, const VectorThree& secondVectorThreeToCompare);
+	static const bool Compare(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree);
 
-	static const double ComputeDistanceBetween(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute);
+	static const double ComputeDistance(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree);
 
-	static const double ComputeRealMagnitudeUsing(const VectorThree& otherVectorThreeToCompute);
-	static const double ComputeSquaredMagnitudeUsing(const VectorThree& otherVectorThreeToCompute);
-	static const VectorThree ClampMagnitudeUsing(const VectorThree& otherVectorThreeToCompute, const double maximumVectorLengthToCompute);
+	static const double ComputeRealMagnitude(const VectorThree& otherVectorThree);
+	static const double ComputeSquaredMagnitude(const VectorThree& otherVectorThree);
+	static const VectorThree ClampMagnitude(const VectorThree& otherVectorThree, const double maximumVectorLength);
 
-	static const VectorThree ComputeNormalizedUsing(const VectorThree& otherVectorThreeToCompute);
+	static const VectorThree ComputeNormalized(const VectorThree& otherVectorThree);
 
-	static const double ComputeDotProductUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute);
-	static const VectorThree ComputeCrossProductUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute);
+	static const double ComputeDotProduct(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree);
+	static const VectorThree ComputeCrossProduct(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree);
 
-	static const VectorThree ComputeUnclampedInterpolationUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, const double specificTimeToCompute);
-	static const VectorThree ComputeClampedInterpolationUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, double specificTimeToCompute);
-	static const VectorThree ComputeQuadraticBezierCurveUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, const VectorThree& thirdVectorThreeToCompute, const double specificTimeToCompute);
-	static const VectorThree ComputeCubicBezierCurveUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, const VectorThree& thirdVectorThreeToCompute, const VectorThree& fourthVectorThreeToCompute, const double specificTimeToCompute);
+	static const VectorThree ComputeUnclampedInterpolation(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, const double specificTime);
+	static const VectorThree ComputeClampedInterpolation(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, double specificTime);
+	static const VectorThree ComputeQuadraticBezierCurve(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, const VectorThree& thirdVectorThree, const double specificTime);
+	static const VectorThree ComputeCubicBezierCurve(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, const VectorThree& thirdVectorThree, const VectorThree& fourthVectorThree, const double specificTimeToCompute);
 };
 
 #endif

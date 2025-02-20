@@ -11,56 +11,56 @@ private:
 	double x = 0.0;
 	double y = 0.0;
 
-	friend std::ostream& operator<<(std::ostream& ostreamComponentToDisplay, const VectorTwo& thisVectorTwoToDisplay);
+	friend std::ostream& operator<<(std::ostream& ostreamComponent, const VectorTwo& thisVectorTwo);
 
 protected:
 
 public:
 	explicit VectorTwo();
-	explicit VectorTwo(const double newXToInitialize, const double newYToInitialize);
-	VectorTwo(const VectorTwo& otherVectorTwoToCopy);
+	explicit VectorTwo(const double newX, const double newY);
+	VectorTwo(const VectorTwo& otherVectorTwo);
 	~VectorTwo();
 
-	const bool operator==(const VectorTwo& otherVectorTwoToCompare) const;
-	const bool operator!=(const VectorTwo& otherVectorTwoToCompare) const;
+	const bool operator==(const VectorTwo& otherVectorTwo) const;
+	const bool operator!=(const VectorTwo& otherVectorTwo) const;
 
-	const VectorTwo& operator=(const VectorTwo& otherVectorTwoToAssign);
+	const VectorTwo& operator=(const VectorTwo& otherVectorTwo);
 
-	const VectorTwo operator+(const VectorTwo& otherVectorTwoToAssign) const;
-	const VectorTwo operator-(const VectorTwo& otherVectorTwoToAssign) const;
-	const VectorTwo operator*(const VectorTwo& otherVectorTwoToAssign) const;
-	const VectorTwo operator/(const VectorTwo& otherVectorTwoToAssign) const;
+	const VectorTwo operator+(const VectorTwo& otherVectorTwo) const;
+	const VectorTwo operator-(const VectorTwo& otherVectorTwo) const;
+	const VectorTwo operator*(const VectorTwo& otherVectorTwo) const;
+	const VectorTwo operator/(const VectorTwo& otherVectorTwo) const;
 
-	const VectorTwo& operator+=(const VectorTwo& otherVectorTwoToAssign);
-	const VectorTwo& operator-=(const VectorTwo& otherVectorTwoToAssign);
-	const VectorTwo& operator*=(const VectorTwo& otherVectorTwoToAssign);
-	const VectorTwo& operator/=(const VectorTwo& otherVectorTwoToAssign);
+	const VectorTwo& operator+=(const VectorTwo& otherVectorTwo);
+	const VectorTwo& operator-=(const VectorTwo& otherVectorTwo);
+	const VectorTwo& operator*=(const VectorTwo& otherVectorTwo);
+	const VectorTwo& operator/=(const VectorTwo& otherVectorTwo);
 
-	const VectorTwo operator*(const double specificValueToAssign) const;
-	const VectorTwo operator/(const double specificValueToAssign) const;
+	const VectorTwo operator*(const double specificValue) const;
+	const VectorTwo operator/(const double specificValue) const;
 
-	const VectorTwo& operator*=(const double specificValueToAssign);
-	const VectorTwo& operator/=(const double specificValueToAssign);
+	const VectorTwo& operator*=(const double specificValue);
+	const VectorTwo& operator/=(const double specificValue);
 
 	const double GetX() const;
 	const double GetY() const;
 
-	static const bool CompareBetween(const VectorTwo& firstVectorTwoToCompare, const VectorTwo& secondVectorTwoToCompare);
+	static const bool Compare(const VectorTwo& firstVectorTwo, const VectorTwo& secondVectorTwo);
 
-	static const double ComputeDistanceBetween(const VectorTwo& firstVectorTwoToCompute, const VectorTwo& secondVectorTwoToCompute);
+	static const double ComputeDistance(const VectorTwo& firstVectorTwo, const VectorTwo& secondVectorTwo);
 
-	static const double ComputeRealMagnitudeUsing(const VectorTwo& otherVectorTwoToCompute);
-	static const double ComputeSquaredMagnitudeUsing(const VectorTwo& otherVectorTwoToCompute);
-	static const VectorTwo ClampMagnitudeUsing(const VectorTwo& otherVectorTwoToCompute, const double maximumVectorLengthToCompute);
+	static const double ComputeRealMagnitude(const VectorTwo& otherVectorTwo);
+	static const double ComputeSquaredMagnitude(const VectorTwo& otherVectorTwo);
+	static const VectorTwo ClampMagnitude(const VectorTwo& otherVectorTwo, const double maximumVectorLength);
 
-	static const VectorTwo ComputeNormalizedUsing(const VectorTwo& otherVectorTwoToCompute);
+	static const VectorTwo ComputeNormalized(const VectorTwo& otherVectorTwo);
 
-	static const double ComputeDotProductUsing(const VectorTwo& firstVectorTwoToCompute, const VectorTwo& secondVectorTwoToCompute);
+	static const double ComputeDotProduct(const VectorTwo& firstVectorTwo, const VectorTwo& secondVectorTwo);
 
-	static const VectorTwo ComputeUnclampedInterpolationUsing(const VectorTwo& firstVectorTwoToCompute, const VectorTwo& secondVectorTwoToCompute, const double specificTimeToCompute);
-	static const VectorTwo ComputeClampedInterpolationUsing(const VectorTwo& firstVectorTwoToCompute, const VectorTwo& secondVectorToCompute, double specificTimeToCompute);
-	static const VectorTwo ComputeQuadraticBezierCurveUsing(const VectorTwo& firstVectorTwoToCompute, const VectorTwo& secondVectorTwoToCompute, const VectorTwo& thirdVectorTwoToCompute, const double specificTimeToCompute);
-	static const VectorTwo ComputeCubicBezierCurveUsing(const VectorTwo& firstVectorTwoToCompute, const VectorTwo& secondVectorTwoToCompute, const VectorTwo& thirdVectorTwoToCompute, const VectorTwo& fourthVectorTwoToCompute, const double specificTimeToCompute);
+	static const VectorTwo ComputeUnclampedInterpolation(const VectorTwo& firstVectorTwo, const VectorTwo& secondVectorTwo, const double specificTime);
+	static const VectorTwo ComputeClampedInterpolation(const VectorTwo& firstVectorTwo, const VectorTwo& secondVector, double specificTime);
+	static const VectorTwo ComputeQuadraticBezierCurve(const VectorTwo& firstVectorTwo, const VectorTwo& secondVectorTwo, const VectorTwo& thirdVectorTwo, const double specificTime);
+	static const VectorTwo ComputeCubicBezierCurve(const VectorTwo& firstVectorTwo, const VectorTwo& secondVectorTwo, const VectorTwo& thirdVectorTwo, const VectorTwo& fourthVectorTwo, const double specificTime);
 };
 
 #endif

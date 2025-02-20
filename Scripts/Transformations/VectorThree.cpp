@@ -1,19 +1,19 @@
 #include "../../Scripts/Transformations/VectorThree.hpp"
 
-std::ostream& operator<<(std::ostream& ostreamComponentToDisplay, const VectorThree& thisVectorThreeToDisplay)
+std::ostream& operator<<(std::ostream& ostreamComponent, const VectorThree& thisVectorThree)
 {
-	ostreamComponentToDisplay << "{ ";
-	ostreamComponentToDisplay << "X : ";
-	ostreamComponentToDisplay << thisVectorThreeToDisplay.GetX();
-	ostreamComponentToDisplay << " , ";
-	ostreamComponentToDisplay << "Y : ";
-	ostreamComponentToDisplay << thisVectorThreeToDisplay.GetY();
-	ostreamComponentToDisplay << " , ";
-	ostreamComponentToDisplay << "Z : ";
-	ostreamComponentToDisplay << thisVectorThreeToDisplay.GetZ();
-	ostreamComponentToDisplay << " }";
+	ostreamComponent << "{ ";
+	ostreamComponent << "X : ";
+	ostreamComponent << thisVectorThree.GetX();
+	ostreamComponent << " , ";
+	ostreamComponent << "Y : ";
+	ostreamComponent << thisVectorThree.GetY();
+	ostreamComponent << " , ";
+	ostreamComponent << "Z : ";
+	ostreamComponent << thisVectorThree.GetZ();
+	ostreamComponent << " }";
 
-	return ostreamComponentToDisplay;
+	return ostreamComponent;
 }
 
 VectorThree::VectorThree() :x(0.0), y(0.0), z(0.0)
@@ -23,18 +23,18 @@ VectorThree::VectorThree() :x(0.0), y(0.0), z(0.0)
 	z = 0.0;
 }
 
-VectorThree::VectorThree(const double newXToInitialize, const double newYToInitialize, const double newZToInitialize) :x(newXToInitialize), y(newYToInitialize), z(newZToInitialize)
+VectorThree::VectorThree(const double newX, const double newY, const double newZ) :x(newX), y(newY), z(newZ)
 {
-	x = newXToInitialize;
-	y = newYToInitialize;
-	z = newZToInitialize;
+	x = newX;
+	y = newY;
+	z = newZ;
 }
 
-VectorThree::VectorThree(const VectorThree& otherVectorThreeToCopy) :x(otherVectorThreeToCopy.GetX()), y(otherVectorThreeToCopy.GetY()), z(otherVectorThreeToCopy.GetZ())
+VectorThree::VectorThree(const VectorThree& otherVectorThree) :x(otherVectorThree.GetX()), y(otherVectorThree.GetY()), z(otherVectorThree.GetZ())
 {
-	x = otherVectorThreeToCopy.GetX();
-	y = otherVectorThreeToCopy.GetY();
-	z = otherVectorThreeToCopy.GetZ();
+	x = otherVectorThree.GetX();
+	y = otherVectorThree.GetY();
+	z = otherVectorThree.GetZ();
 }
 
 VectorThree::~VectorThree()
@@ -44,35 +44,35 @@ VectorThree::~VectorThree()
 	z = 0.0;
 }
 
-const bool VectorThree::operator==(const VectorThree& otherVectorThreeToCompare) const
+const bool VectorThree::operator==(const VectorThree& otherVectorThree) const
 {
-	const bool vectorThreeDesiredXComparison = GetX() == otherVectorThreeToCompare.GetX();
-	const bool vectorThreeDesiredYComparison = GetY() == otherVectorThreeToCompare.GetY();
-	const bool vectorThreeDesiredZComparison = GetZ() == otherVectorThreeToCompare.GetZ();
+	const bool vectorThreeDesiredXComparison = GetX() == otherVectorThree.GetX();
+	const bool vectorThreeDesiredYComparison = GetY() == otherVectorThree.GetY();
+	const bool vectorThreeDesiredZComparison = GetZ() == otherVectorThree.GetZ();
 
-	return vectorThreeDesiredXComparison == true && vectorThreeDesiredYComparison == true && vectorThreeDesiredZComparison == true;
+	return vectorThreeDesiredXComparison && vectorThreeDesiredYComparison && vectorThreeDesiredZComparison;
 }
 
-const bool VectorThree::operator!=(const VectorThree& otherVectorThreeToCompare) const
+const bool VectorThree::operator!=(const VectorThree& otherVectorThree) const
 {
-	const bool vectorThreeDesiredXComparison = GetX() != otherVectorThreeToCompare.GetX();
-	const bool vectorThreeDesiredYComparison = GetY() != otherVectorThreeToCompare.GetY();
-	const bool vectorThreeDesiredZComparison = GetZ() != otherVectorThreeToCompare.GetZ();
+	const bool vectorThreeDesiredXComparison = GetX() != otherVectorThree.GetX();
+	const bool vectorThreeDesiredYComparison = GetY() != otherVectorThree.GetY();
+	const bool vectorThreeDesiredZComparison = GetZ() != otherVectorThree.GetZ();
 
-	return vectorThreeDesiredXComparison == true || vectorThreeDesiredYComparison == true || vectorThreeDesiredZComparison == true;
+	return vectorThreeDesiredXComparison || vectorThreeDesiredYComparison || vectorThreeDesiredZComparison;
 }
 
-const VectorThree& VectorThree::operator=(const VectorThree& otherVectorThreeToAssign)
+const VectorThree& VectorThree::operator=(const VectorThree& otherVectorThree)
 {
-	if (this == &otherVectorThreeToAssign)
+	if (this == &otherVectorThree)
 	{
 		return *this;
 	}
 	else
 	{
-		const double vectorThreeDesiredX = otherVectorThreeToAssign.GetX();
-		const double vectorThreeDesiredY = otherVectorThreeToAssign.GetY();
-		const double vectorThreeDesiredZ = otherVectorThreeToAssign.GetZ();
+		const double vectorThreeDesiredX = otherVectorThree.GetX();
+		const double vectorThreeDesiredY = otherVectorThree.GetY();
+		const double vectorThreeDesiredZ = otherVectorThree.GetZ();
 
 		x = vectorThreeDesiredX;
 		y = vectorThreeDesiredY;
@@ -82,47 +82,47 @@ const VectorThree& VectorThree::operator=(const VectorThree& otherVectorThreeToA
 	}
 }
 
-const VectorThree VectorThree::operator+(const VectorThree& otherVectorThreeToAssign) const
+const VectorThree VectorThree::operator+(const VectorThree& otherVectorThree) const
 {
-	const double vectorThreeDesiredX = GetX() + otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() + otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() + otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() + otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() + otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() + otherVectorThree.GetZ();
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree VectorThree::operator-(const VectorThree& otherVectorThreeToAssign) const
+const VectorThree VectorThree::operator-(const VectorThree& otherVectorThree) const
 {
-	const double vectorThreeDesiredX = GetX() - otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() - otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() - otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() - otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() - otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() - otherVectorThree.GetZ();
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree VectorThree::operator*(const VectorThree& otherVectorThreeToAssign) const
+const VectorThree VectorThree::operator*(const VectorThree& otherVectorThree) const
 {
-	const double vectorThreeDesiredX = GetX() * otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() * otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() * otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() * otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() * otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() * otherVectorThree.GetZ();
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree VectorThree::operator/(const VectorThree& otherVectorThreeToAssign) const
+const VectorThree VectorThree::operator/(const VectorThree& otherVectorThree) const
 {
-	const double vectorThreeDesiredX = GetX() / otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() / otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() / otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() / otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() / otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() / otherVectorThree.GetZ();
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree& VectorThree::operator+=(const VectorThree& otherVectorThreeToAssign)
+const VectorThree& VectorThree::operator+=(const VectorThree& otherVectorThree)
 {
-	const double vectorThreeDesiredX = GetX() + otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() + otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() + otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() + otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() + otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() + otherVectorThree.GetZ();
 
 	x = vectorThreeDesiredX;
 	y = vectorThreeDesiredY;
@@ -131,11 +131,11 @@ const VectorThree& VectorThree::operator+=(const VectorThree& otherVectorThreeTo
 	return *this;
 }
 
-const VectorThree& VectorThree::operator-=(const VectorThree& otherVectorThreeToAssign)
+const VectorThree& VectorThree::operator-=(const VectorThree& otherVectorThree)
 {
-	const double vectorThreeDesiredX = GetX() - otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() - otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() - otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() - otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() - otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() - otherVectorThree.GetZ();
 
 	x = vectorThreeDesiredX;
 	y = vectorThreeDesiredY;
@@ -144,11 +144,11 @@ const VectorThree& VectorThree::operator-=(const VectorThree& otherVectorThreeTo
 	return *this;
 }
 
-const VectorThree& VectorThree::operator*=(const VectorThree& otherVectorThreeToAssign)
+const VectorThree& VectorThree::operator*=(const VectorThree& otherVectorThree)
 {
-	const double vectorThreeDesiredX = GetX() * otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() * otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() * otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() * otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() * otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() * otherVectorThree.GetZ();
 
 	x = vectorThreeDesiredX;
 	y = vectorThreeDesiredY;
@@ -157,11 +157,11 @@ const VectorThree& VectorThree::operator*=(const VectorThree& otherVectorThreeTo
 	return *this;
 }
 
-const VectorThree& VectorThree::operator/=(const VectorThree& otherVectorThreeToAssign)
+const VectorThree& VectorThree::operator/=(const VectorThree& otherVectorThree)
 {
-	const double vectorThreeDesiredX = GetX() / otherVectorThreeToAssign.GetX();
-	const double vectorThreeDesiredY = GetY() / otherVectorThreeToAssign.GetY();
-	const double vectorThreeDesiredZ = GetZ() / otherVectorThreeToAssign.GetZ();
+	const double vectorThreeDesiredX = GetX() / otherVectorThree.GetX();
+	const double vectorThreeDesiredY = GetY() / otherVectorThree.GetY();
+	const double vectorThreeDesiredZ = GetZ() / otherVectorThree.GetZ();
 
 	x = vectorThreeDesiredX;
 	y = vectorThreeDesiredY;
@@ -170,29 +170,29 @@ const VectorThree& VectorThree::operator/=(const VectorThree& otherVectorThreeTo
 	return *this;
 }
 
-const VectorThree VectorThree::operator*(const double specificValueToAssign) const
+const VectorThree VectorThree::operator*(const double specificValue) const
 {
-	const double vectorThreeDesiredX = GetX() * specificValueToAssign;
-	const double vectorThreeDesiredY = GetY() * specificValueToAssign;
-	const double vectorThreeDesiredZ = GetZ() * specificValueToAssign;
+	const double vectorThreeDesiredX = GetX() * specificValue;
+	const double vectorThreeDesiredY = GetY() * specificValue;
+	const double vectorThreeDesiredZ = GetZ() * specificValue;
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree VectorThree::operator/(const double specificValueToAssign) const
+const VectorThree VectorThree::operator/(const double specificValue) const
 {
-	const double vectorThreeDesiredX = GetX() / specificValueToAssign;
-	const double vectorThreeDesiredY = GetY() / specificValueToAssign;
-	const double vectorThreeDesiredZ = GetZ() / specificValueToAssign;
+	const double vectorThreeDesiredX = GetX() / specificValue;
+	const double vectorThreeDesiredY = GetY() / specificValue;
+	const double vectorThreeDesiredZ = GetZ() / specificValue;
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree& VectorThree::operator*=(const double specificValueToAssign)
+const VectorThree& VectorThree::operator*=(const double specificValue)
 {
-	const double vectorThreeDesiredX = GetX() * specificValueToAssign;
-	const double vectorThreeDesiredY = GetY() * specificValueToAssign;
-	const double vectorThreeDesiredZ = GetZ() * specificValueToAssign;
+	const double vectorThreeDesiredX = GetX() * specificValue;
+	const double vectorThreeDesiredY = GetY() * specificValue;
+	const double vectorThreeDesiredZ = GetZ() * specificValue;
 
 	x = vectorThreeDesiredX;
 	y = vectorThreeDesiredY;
@@ -201,11 +201,11 @@ const VectorThree& VectorThree::operator*=(const double specificValueToAssign)
 	return *this;
 }
 
-const VectorThree& VectorThree::operator/=(const double specificValueToAssign)
+const VectorThree& VectorThree::operator/=(const double specificValue)
 {
-	const double vectorThreeDesiredX = GetX() / specificValueToAssign;
-	const double vectorThreeDesiredY = GetY() / specificValueToAssign;
-	const double vectorThreeDesiredZ = GetZ() / specificValueToAssign;
+	const double vectorThreeDesiredX = GetX() / specificValue;
+	const double vectorThreeDesiredY = GetY() / specificValue;
+	const double vectorThreeDesiredZ = GetZ() / specificValue;
 
 	x = vectorThreeDesiredX;
 	y = vectorThreeDesiredY;
@@ -229,84 +229,84 @@ const double VectorThree::GetZ() const
 	return z;
 }
 
-const bool VectorThree::CompareBetween(const VectorThree& firstVectorThreeToCompare, const VectorThree& secondVectorThreeToCompare)
+const bool VectorThree::Compare(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree)
 {
-	const bool vectorThreeEqualityComparison = firstVectorThreeToCompare == secondVectorThreeToCompare;
-	const bool vectorThreeDifferenceComparison = firstVectorThreeToCompare != secondVectorThreeToCompare;
+	const bool vectorThreeEqualityComparison = firstVectorThree == secondVectorThree;
+	const bool vectorThreeDifferenceComparison = firstVectorThree != secondVectorThree;
 
-	return vectorThreeEqualityComparison == true && vectorThreeDifferenceComparison == true;
+	return vectorThreeEqualityComparison && vectorThreeDifferenceComparison;
 }
 
-const double VectorThree::ComputeDistanceBetween(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute)
+const double VectorThree::ComputeDistance(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree)
 {
-	const double vectorThreeFinalXDifference = firstVectorThreeToCompute.GetX() - secondVectorThreeToCompute.GetX();
-	const double vectorThreeFinalYDifference = firstVectorThreeToCompute.GetY() - secondVectorThreeToCompute.GetY();
-	const double vectorThreeFinalZDifference = firstVectorThreeToCompute.GetZ() - secondVectorThreeToCompute.GetZ();
+	const double vectorThreeFinalXDifference = firstVectorThree.GetX() - secondVectorThree.GetX();
+	const double vectorThreeFinalYDifference = firstVectorThree.GetY() - secondVectorThree.GetY();
+	const double vectorThreeFinalZDifference = firstVectorThree.GetZ() - secondVectorThree.GetZ();
 
 	return std::sqrt(vectorThreeFinalXDifference * vectorThreeFinalXDifference + vectorThreeFinalYDifference * vectorThreeFinalYDifference + vectorThreeFinalZDifference * vectorThreeFinalZDifference);
 }
 
-const double VectorThree::ComputeRealMagnitudeUsing(const VectorThree& otherVectorThreeToCompute)
+const double VectorThree::ComputeRealMagnitude(const VectorThree& otherVectorThree)
 {
-	const double otherVectorThreeXSquared = otherVectorThreeToCompute.GetX() * otherVectorThreeToCompute.GetX();
-	const double otherVectorThreeYSquared = otherVectorThreeToCompute.GetY() * otherVectorThreeToCompute.GetY();
-	const double otherVectorThreeZSquared = otherVectorThreeToCompute.GetZ() * otherVectorThreeToCompute.GetZ();
+	const double vectorThreeXSquared = otherVectorThree.GetX() * otherVectorThree.GetX();
+	const double vectorThreeYSquared = otherVectorThree.GetY() * otherVectorThree.GetY();
+	const double vectorThreeZSquared = otherVectorThree.GetZ() * otherVectorThree.GetZ();
 
-	return std::sqrt(otherVectorThreeXSquared + otherVectorThreeYSquared + otherVectorThreeZSquared);
+	return std::sqrt(vectorThreeXSquared + vectorThreeYSquared + vectorThreeZSquared);
 }
 
-const double VectorThree::ComputeSquaredMagnitudeUsing(const VectorThree& otherVectorThreeToCompute)
+const double VectorThree::ComputeSquaredMagnitude(const VectorThree& otherVectorThree)
 {
-	const double otherVectorThreeXSquared = otherVectorThreeToCompute.GetX() * otherVectorThreeToCompute.GetX();
-	const double otherVectorThreeYSquared = otherVectorThreeToCompute.GetY() * otherVectorThreeToCompute.GetY();
-	const double otherVectorThreeZSquared = otherVectorThreeToCompute.GetZ() * otherVectorThreeToCompute.GetZ();
+	const double vectorThreeXSquared = otherVectorThree.GetX() * otherVectorThree.GetX();
+	const double vectorThreeYSquared = otherVectorThree.GetY() * otherVectorThree.GetY();
+	const double vectorThreeZSquared = otherVectorThree.GetZ() * otherVectorThree.GetZ();
 
-	return otherVectorThreeXSquared + otherVectorThreeYSquared + otherVectorThreeZSquared;
+	return vectorThreeXSquared + vectorThreeYSquared + vectorThreeZSquared;
 }
 
-const VectorThree VectorThree::ClampMagnitudeUsing(const VectorThree& otherVectorThreeToCompute, const double maximumVectorLengthToCompute)
+const VectorThree VectorThree::ClampMagnitude(const VectorThree& otherVectorThree, const double maximumVectorLength)
 {
-	const double otherVectorThrreeSquaredMagnitude = ComputeSquaredMagnitudeUsing(otherVectorThreeToCompute);
-
-	double otherVectorThreeDesiredX;
-	double otherVectorThreeDesiredY;
-	double otherVectorThreeDesiredZ;
-
-	if (otherVectorThrreeSquaredMagnitude > maximumVectorLengthToCompute * maximumVectorLengthToCompute)
-	{
-		const double otherVectorThreeRealMagnitude = ComputeRealMagnitudeUsing(otherVectorThreeToCompute);
-
-		const double otherVectorThreeXNormalized = otherVectorThreeToCompute.GetX() / otherVectorThreeRealMagnitude;
-		const double otherVectorThreeYNormalized = otherVectorThreeToCompute.GetY() / otherVectorThreeRealMagnitude;
-		const double otherVectorThreeZNormalized = otherVectorThreeToCompute.GetZ() / otherVectorThreeRealMagnitude;
-
-		otherVectorThreeDesiredX = otherVectorThreeXNormalized * maximumVectorLengthToCompute;
-		otherVectorThreeDesiredY = otherVectorThreeYNormalized * maximumVectorLengthToCompute;
-		otherVectorThreeDesiredZ = otherVectorThreeZNormalized * maximumVectorLengthToCompute;
-	}
-	else
-	{
-		otherVectorThreeDesiredX = otherVectorThreeToCompute.GetX();
-		otherVectorThreeDesiredY = otherVectorThreeToCompute.GetY();
-		otherVectorThreeDesiredZ = otherVectorThreeToCompute.GetZ();
-	}
-
-	return VectorThree(otherVectorThreeDesiredX, otherVectorThreeDesiredY, otherVectorThreeDesiredZ);
-}
-
-const VectorThree VectorThree::ComputeNormalizedUsing(const VectorThree& otherVectorThreeToCompute)
-{
-	const float otherVectorThreeMagnitude = ComputeRealMagnitudeUsing(otherVectorThreeToCompute);
+	const double vectorThrreeSquaredMagnitude = ComputeSquaredMagnitude(otherVectorThree);
 
 	double vectorThreeDesiredX;
 	double vectorThreeDesiredY;
 	double vectorThreeDesiredZ;
 
-	if (otherVectorThreeMagnitude > 0.0)
+	if (vectorThrreeSquaredMagnitude > maximumVectorLength * maximumVectorLength)
 	{
-		vectorThreeDesiredX = otherVectorThreeToCompute.GetX() / otherVectorThreeMagnitude;
-		vectorThreeDesiredY = otherVectorThreeToCompute.GetY() / otherVectorThreeMagnitude;
-		vectorThreeDesiredZ = otherVectorThreeToCompute.GetZ() / otherVectorThreeMagnitude;
+		const double vectorThreeRealMagnitude = ComputeRealMagnitude(otherVectorThree);
+
+		const double vectorThreeXNormalized = otherVectorThree.GetX() / vectorThreeRealMagnitude;
+		const double vectorThreeYNormalized = otherVectorThree.GetY() / vectorThreeRealMagnitude;
+		const double vectorThreeZNormalized = otherVectorThree.GetZ() / vectorThreeRealMagnitude;
+
+		vectorThreeDesiredX = vectorThreeXNormalized * maximumVectorLength;
+		vectorThreeDesiredY = vectorThreeYNormalized * maximumVectorLength;
+		vectorThreeDesiredZ = vectorThreeZNormalized * maximumVectorLength;
+	}
+	else
+	{
+		vectorThreeDesiredX = otherVectorThree.GetX();
+		vectorThreeDesiredY = otherVectorThree.GetY();
+		vectorThreeDesiredZ = otherVectorThree.GetZ();
+	}
+
+	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
+}
+
+const VectorThree VectorThree::ComputeNormalized(const VectorThree& otherVectorThree)
+{
+	const float vectorThreeMagnitude = ComputeRealMagnitude(otherVectorThree);
+
+	double vectorThreeDesiredX;
+	double vectorThreeDesiredY;
+	double vectorThreeDesiredZ;
+
+	if (vectorThreeMagnitude > 0.0)
+	{
+		vectorThreeDesiredX = otherVectorThree.GetX() / vectorThreeMagnitude;
+		vectorThreeDesiredY = otherVectorThree.GetY() / vectorThreeMagnitude;
+		vectorThreeDesiredZ = otherVectorThree.GetZ() / vectorThreeMagnitude;
 	}
 	else
 	{
@@ -318,71 +318,71 @@ const VectorThree VectorThree::ComputeNormalizedUsing(const VectorThree& otherVe
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const double VectorThree::ComputeDotProductUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute)
+const double VectorThree::ComputeDotProduct(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree)
 {
-	const double vectorThreeFinalScalarX = firstVectorThreeToCompute.GetX() * secondVectorThreeToCompute.GetX();
-	const double vectorThreeFinalScalarY = firstVectorThreeToCompute.GetY() * secondVectorThreeToCompute.GetY();
-	const double vectorThreeFinalScalarZ = firstVectorThreeToCompute.GetZ() * secondVectorThreeToCompute.GetZ();
+	const double vectorThreeFinalScalarX = firstVectorThree.GetX() * secondVectorThree.GetX();
+	const double vectorThreeFinalScalarY = firstVectorThree.GetY() * secondVectorThree.GetY();
+	const double vectorThreeFinalScalarZ = firstVectorThree.GetZ() * secondVectorThree.GetZ();
 
 	return vectorThreeFinalScalarX + vectorThreeFinalScalarY + vectorThreeFinalScalarZ;
 }
 
-const VectorThree VectorThree::ComputeCrossProductUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute)
+const VectorThree VectorThree::ComputeCrossProduct(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree)
 {
-	const double vectorThreeDesiredX = firstVectorThreeToCompute.GetY() * secondVectorThreeToCompute.GetZ() - firstVectorThreeToCompute.GetZ() * secondVectorThreeToCompute.GetY();
-	const double vectorThreeDesiredY = firstVectorThreeToCompute.GetZ() * secondVectorThreeToCompute.GetX() - firstVectorThreeToCompute.GetX() * secondVectorThreeToCompute.GetZ();
-	const double vectorThreeDesiredZ = firstVectorThreeToCompute.GetX() * secondVectorThreeToCompute.GetY() - firstVectorThreeToCompute.GetY() * secondVectorThreeToCompute.GetX();
+	const double vectorThreeDesiredX = firstVectorThree.GetY() * secondVectorThree.GetZ() - firstVectorThree.GetZ() * secondVectorThree.GetY();
+	const double vectorThreeDesiredY = firstVectorThree.GetZ() * secondVectorThree.GetX() - firstVectorThree.GetX() * secondVectorThree.GetZ();
+	const double vectorThreeDesiredZ = firstVectorThree.GetX() * secondVectorThree.GetY() - firstVectorThree.GetY() * secondVectorThree.GetX();
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree VectorThree::ComputeUnclampedInterpolationUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, const double specificTimeToCompute)
+const VectorThree VectorThree::ComputeUnclampedInterpolation(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, const double specificTime)
 {
-	const double vectorThreeDesiredX = firstVectorThreeToCompute.x + (secondVectorThreeToCompute.x - firstVectorThreeToCompute.x) * specificTimeToCompute;
-	const double vectorThreeDesiredY = firstVectorThreeToCompute.y + (secondVectorThreeToCompute.y - firstVectorThreeToCompute.y) * specificTimeToCompute;
-	const double vectorThreeDesiredZ = firstVectorThreeToCompute.z + (secondVectorThreeToCompute.z - firstVectorThreeToCompute.z) * specificTimeToCompute;
+	const double vectorThreeDesiredX = firstVectorThree.GetX() + (secondVectorThree.GetX() - firstVectorThree.GetX()) * specificTime;
+	const double vectorThreeDesiredY = firstVectorThree.GetY() + (secondVectorThree.GetY() - firstVectorThree.GetY()) * specificTime;
+	const double vectorThreeDesiredZ = firstVectorThree.GetZ() + (secondVectorThree.GetZ() - firstVectorThree.GetZ()) * specificTime;
 
 	return VectorThree(vectorThreeDesiredX, vectorThreeDesiredY, vectorThreeDesiredZ);
 }
 
-const VectorThree VectorThree::ComputeClampedInterpolationUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, double specificTimeToCompute)
+const VectorThree VectorThree::ComputeClampedInterpolation(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, double specificTime)
 {
 	VectorThree vectorThreeDesiredState;
-	const double MinimumTimeToCompute = 0.0;
-	const double MaximumTimeToCompute = 1.0;
+	const double MinimumTime = 0.0;
+	const double MaximumTime = 1.0;
 
-	if (specificTimeToCompute <= MinimumTimeToCompute)
+	if (specificTime <= MinimumTime)
 	{
-		specificTimeToCompute = MinimumTimeToCompute;
+		specificTime = MinimumTime;
 
-		vectorThreeDesiredState = firstVectorThreeToCompute;
+		vectorThreeDesiredState = firstVectorThree;
 	}
-	else if (specificTimeToCompute >= MaximumTimeToCompute)
+	else if (specificTime >= MaximumTime)
 	{
-		specificTimeToCompute = MaximumTimeToCompute;
+		specificTime = MaximumTime;
 
-		vectorThreeDesiredState = secondVectorThreeToCompute;
+		vectorThreeDesiredState = secondVectorThree;
 	}
 	else
 	{
-		vectorThreeDesiredState = ComputeUnclampedInterpolationUsing(firstVectorThreeToCompute, secondVectorThreeToCompute, specificTimeToCompute);
+		vectorThreeDesiredState = ComputeUnclampedInterpolation(firstVectorThree, secondVectorThree, specificTime);
 	}
 
 	return vectorThreeDesiredState;
 }
 
-const VectorThree VectorThree::ComputeQuadraticBezierCurveUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, const VectorThree& thirdVectorThreeToCompute, const double specificTimeToCompute)
+const VectorThree VectorThree::ComputeQuadraticBezierCurve(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, const VectorThree& thirdVectorThree, const double specificTime)
 {
-	const VectorThree vectorThreeDesiredABPoint = ComputeClampedInterpolationUsing(firstVectorThreeToCompute, secondVectorThreeToCompute, specificTimeToCompute);
-	const VectorThree vectorThreeDesiredBCPoint = ComputeClampedInterpolationUsing(secondVectorThreeToCompute, thirdVectorThreeToCompute, specificTimeToCompute);
+	const VectorThree vectorThreeDesiredABPoint = ComputeClampedInterpolation(firstVectorThree, secondVectorThree, specificTime);
+	const VectorThree vectorThreeDesiredBCPoint = ComputeClampedInterpolation(secondVectorThree, thirdVectorThree, specificTime);
 
-	return ComputeClampedInterpolationUsing(vectorThreeDesiredABPoint, vectorThreeDesiredBCPoint, specificTimeToCompute);
+	return ComputeClampedInterpolation(vectorThreeDesiredABPoint, vectorThreeDesiredBCPoint, specificTime);
 }
 
-const VectorThree VectorThree::ComputeCubicBezierCurveUsing(const VectorThree& firstVectorThreeToCompute, const VectorThree& secondVectorThreeToCompute, const VectorThree& thirdVectorThreeToCompute, const VectorThree& fourthVectorThreeToCompute, const double specificTimeToCompute)
+const VectorThree VectorThree::ComputeCubicBezierCurve(const VectorThree& firstVectorThree, const VectorThree& secondVectorThree, const VectorThree& thirdVectorThree, const VectorThree& fourthVectorThree, const double specificTime)
 {
-	const VectorThree vectorThreeDesiredABCPoint = ComputeQuadraticBezierCurveUsing(firstVectorThreeToCompute, secondVectorThreeToCompute, thirdVectorThreeToCompute, specificTimeToCompute);
-	const VectorThree vectorThreeDesiredBCDPoint = ComputeQuadraticBezierCurveUsing(secondVectorThreeToCompute, thirdVectorThreeToCompute, fourthVectorThreeToCompute, specificTimeToCompute);
+	const VectorThree vectorThreeDesiredABCPoint = ComputeQuadraticBezierCurve(firstVectorThree, secondVectorThree, thirdVectorThree, specificTime);
+	const VectorThree vectorThreeDesiredBCDPoint = ComputeQuadraticBezierCurve(secondVectorThree, thirdVectorThree, fourthVectorThree, specificTime);
 
-	return ComputeClampedInterpolationUsing(vectorThreeDesiredABCPoint, vectorThreeDesiredBCDPoint, specificTimeToCompute);
+	return ComputeClampedInterpolation(vectorThreeDesiredABCPoint, vectorThreeDesiredBCDPoint, specificTime);
 }
